@@ -22,7 +22,7 @@ module Hunt
 
     def search(term)
       # puts Util.to_stemmed_words(term)
-      where('searches.default' => Regexp.new(Util.to_stemmed_words(term)) )
+      where('searches.default' => Regexp.new(Util.to_stemmed_words(term)) ).to_a
     end
   end
 
