@@ -36,10 +36,10 @@ module Hunt
   module InstanceMethods
     def concatted_search_values
       self.class.search_keys.map do |key| 
-        if key.include?(".")
+        if key.to_s.include?(".")
           methods = key.split(".")
           object = self
-          methods.map{|x| object = object.send(x) }
+          methods.each{|x| object = object.send(x) }
           object
         else
           send(key) 
