@@ -21,9 +21,16 @@ module Hunt
     end
 
     def search(term)
-      puts Util.to_stemmed_words(term).inspect
-      where('searches.default' => Regexp.new(Util.to_stemmed_words(term).to_s) ).to_a
+      # puts Util.to_stemmed_words(term).inspect
+      where('searches.default' => Util.to_stemmed_words(term) )
     end
+
+    def search_regex(term)
+      # puts Util.to_stemmed_words(term).inspect
+      where('searches.default' => Regexp.new(Util.to_stemmed_words(term).to_s) )
+    end
+
+
   end
 
   module InstanceMethods
